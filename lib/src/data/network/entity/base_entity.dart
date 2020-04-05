@@ -1,26 +1,9 @@
 import 'package:flutterdatabase/src/utils/hash_utils.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-/// This allows the `User` class to access private members in
-/// the generated file. The value for this is *.g.dart, where
-/// the star denotes the source file name.
 part 'base_entity.g.dart';
 
-/// This allows the `User` class to access private members in
-/// the generated file. The value for this is *.g.dart, where
-/// the star denotes the source file name.
-
-/// This allows the `User` class to access private members in
-/// the generated file. The value for this is *.g.dart, where
-/// the star denotes the source file name.
-
-/// This allows the `User` class to access private members in
-/// the generated file. The value for this is *.g.dart, where
-/// the star denotes the source file name.
-
-/// This allows the `User` class to access private members in
-/// the generated file. The value for this is *.g.dart, where
-/// the star denotes the source file name.
-
+@JsonSerializable()
 class BaseEntity {
   String method;
 

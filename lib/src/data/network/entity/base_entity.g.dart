@@ -8,7 +8,15 @@ part of 'base_entity.dart';
 
 BaseEntity _$BaseEntityFromJson(Map<String, dynamic> json) {
   return BaseEntity(
-      method: json['method'] as String,
-      message: json['message'] as String,
-      status: json['status'] as int);
+    method: json['method'] as String,
+    message: json['message'] as String,
+    status: json['status'] as int,
+  );
 }
+
+Map<String, dynamic> _$BaseEntityToJson(BaseEntity instance) =>
+    <String, dynamic>{
+      'method': instance.method,
+      'message': instance.message,
+      'status': instance.status,
+    };

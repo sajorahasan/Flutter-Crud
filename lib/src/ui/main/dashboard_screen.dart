@@ -24,20 +24,18 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardState extends State<DashboardScreen> {
-  List<User> users = [];
-
   _DashboardState() {}
 
   @override
   void initState() {
     super.initState();
-    //Future.delayed(Duration.zero, this.fetchUsersListing);
+    Future.delayed(Duration.zero, this.fetchUsersListing);
   }
 
   void fetchUsersListing() {
-    UserController(context)
-        .getAllUsers()
-        .then((list) => {print("fetchUsersListing ==> $list")});
+    UserController(context).getAllUsers().then((data) async {
+      await localRepository.userRepo.insertAll(data);
+    });
   }
 
   Future<List<User>> getAllUsers() async {
@@ -82,7 +80,7 @@ class _DashboardState extends State<DashboardScreen> {
           child: FutureBuilder<List<User>>(
             future: getAllUsers(),
             builder: (context, snapshot) {
-              if (snapshot.hasData && snapshot.data.length > 0) {
+              if (snapshot.hasData && snapshot.data.length != 0) {
                 return ListView.builder(
                   itemCount: snapshot.data.length,
                   padding: EdgeInsets.all(8.0),

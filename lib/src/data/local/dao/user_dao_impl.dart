@@ -6,7 +6,7 @@ class UserDAOImpl implements UserDao {
   @override
   Future<int> insert(User user) async {
     final db = await AppDatabase.get().database;
-    return await db.insert(UserDao.TABLE_NAME, user.toMap());
+    return await db.insert(UserDao.TABLE_NAME, user.toJson());
   }
 
   @override
@@ -14,7 +14,7 @@ class UserDAOImpl implements UserDao {
     final db = await AppDatabase.get().database;
     var batch = db.batch();
     for (var user in userList) {
-      batch.insert(UserDao.TABLE_NAME, user.toMap());
+      batch.insert(UserDao.TABLE_NAME, user.toJson());
     }
     batch.commit();
   }
@@ -22,7 +22,7 @@ class UserDAOImpl implements UserDao {
   @override
   Future<int> update(User user) async {
     final db = await AppDatabase.get().database;
-    return await db.update(UserDao.TABLE_NAME, user.toMap(),
+    return await db.update(UserDao.TABLE_NAME, user.toJson(),
         where: UserDao.ID + "=?", whereArgs: [user.id]);
   }
 
@@ -36,7 +36,7 @@ class UserDAOImpl implements UserDao {
   Future<List<User>> getAll() async {
     final db = await AppDatabase.get().database;
     var res = await db.query(UserDao.TABLE_NAME);
-    return res.isNotEmpty ? res.map((c) => User.fromMap(c)).toList() : [];
+    return res.isNotEmpty ? res.map((c) => User.fromJson(c)).toList() : [];
   }
 
   @override
@@ -45,7 +45,7 @@ class UserDAOImpl implements UserDao {
     var res = await db
         .query(UserDao.TABLE_NAME, where: UserDao.ID + "=?", whereArgs: [id]);
 
-    return res != null ? res.map((c) => User.fromMap(c)) : {};
+    return res != null ? res.map((c) => User.fromJson(c)) : {};
   }
 
   @override

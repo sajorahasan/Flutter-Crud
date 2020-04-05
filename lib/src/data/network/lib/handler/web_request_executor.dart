@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutterdatabase/src/data/network/entity/base_entity.dart';
 import 'package:flutterdatabase/src/data/network/lib/exception/response_error.dart';
 import 'package:flutterdatabase/src/data/network/lib/handler/web_request_builder.dart';
 import 'package:flutterdatabase/src/data/network/lib/stack/dio_stack.dart';
@@ -33,17 +32,17 @@ class WebRequestExecutor {
       Navigator.of(mRequestBuilder.context, rootNavigator: true).pop('dialog');
     }
 
-    return response.result.toString();
     String error = "";
     if (response.status == 200) {
-      BaseEntity entity = BaseEntity.parse(response.result);
-      if (entity != null && entity.status == 1) {
-        //Success
-        return response.result;
-      } else {
-        //Error
-        error = entity.message;
-      }
+      return response.result;
+//      BaseEntity entity = BaseEntity.parse(response.result);
+//      if (entity != null && entity.status == 1) {
+//        //Success
+//        return response.result;
+//      } else {
+//        //Error
+//        error = entity.message;
+//      }
     } else if (response.status == 401) {
       if (mRequestBuilder.handleError && mRequestBuilder.context != null) {
         //ProfilePref.logout(mRequestBuilder.context);

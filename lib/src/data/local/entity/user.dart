@@ -1,5 +1,3 @@
-import 'package:flutterdatabase/src/data/local/dao/user_dao.dart';
-import 'package:flutterdatabase/src/utils/hash_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user.g.dart';
@@ -10,6 +8,7 @@ class User {
   String name;
   String email;
   String gender;
+  @JsonKey(defaultValue: 0)
   int age;
 
   User({this.id, this.name, this.email, this.gender, this.age});
@@ -19,16 +18,7 @@ class User {
     return 'User{id: $id, name: $name, email: $email, gender: $gender, age: $age}';
   }
 
-  factory User.fromJson(String jsonString) {
-    Map baseMap = HashUtils.fromJson(jsonString);
-    return _$UserFromJson(baseMap);
-  }
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  factory User.parseJson(Map baseMap) {
-    return _$UserFromJson(baseMap);
-  }
-
-  Map<String, dynamic> toMap() => _$toMap(this);
-
-  static User fromMap(Map<String, dynamic> map) => _$fromMap(map);
+  Map<String, dynamic> toJson() => _$UserToJson(this);
 }

@@ -23,25 +23,3 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'gender': instance.gender,
       'age': instance.age,
     };
-
-Map<String, dynamic> _$toMap(User user) {
-  Map<String, dynamic> map = new Map();
-
-  map[UserDao.ID] = user.id;
-  map[UserDao.NAME] = user.name;
-  map[UserDao.EMAIL] = user.email;
-  map[UserDao.GENDER] = user.gender;
-  map[UserDao.AGE] = user.age;
-  return map;
-}
-
-User _$fromMap(Map<String, dynamic> map) {
-  User contact = User(
-      id: map[UserDao.ID],
-      name: map[UserDao.NAME],
-      email: map[UserDao.EMAIL],
-      gender: map[UserDao.GENDER],
-      age: map[UserDao.AGE]);
-
-  return contact;
-}

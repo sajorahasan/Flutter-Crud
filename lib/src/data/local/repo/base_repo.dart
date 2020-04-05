@@ -1,11 +1,11 @@
 abstract class BaseRepo<T> {
   Future<int> insert(T entity);
 
-  void insertAll(List<T> entityList);
+  Future insertAll(List<T> entityList);
 
   Future<int> update(T entity);
 
-  void updateAll(List<T> entityList);
+  Future updateAll(List<T> entityList);
 
   Future<List<T>> getAll();
 
