@@ -29,7 +29,7 @@ class _DashboardState extends State<DashboardScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, this.fetchUsersListing);
+    //Future.delayed(Duration.zero, this.fetchUsersListing);
   }
 
   void fetchUsersListing() {

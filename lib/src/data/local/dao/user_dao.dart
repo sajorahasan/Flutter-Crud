@@ -3,6 +3,7 @@ import 'package:flutterdatabase/src/data/local/entity/user.dart';
 
 abstract class UserDao implements BaseDAO<User> {
   static const String ID = "id";
+  static const String DOCUMENT_ID = "documentId";
   static const String NAME = "name";
   static const String EMAIL = "email";
   static const String GENDER = "gender";
@@ -12,8 +13,8 @@ abstract class UserDao implements BaseDAO<User> {
 
   static const String CREATE_QUERY = "CREATE TABLE IF NOT EXISTS `" +
       TABLE_NAME + "` (`" + ID + "` INTEGER PRIMARY KEY NOT NULL, " +
-      "`" + NAME + "` TEXT NOT NULL, `" + EMAIL + "` TEXT, `" +
-      GENDER + "` TEXT," + "`" + AGE + "` INTEGER)";
+      "`" + NAME + "` TEXT NOT NULL, `" + DOCUMENT_ID + "` TEXT, `" +
+      EMAIL + "` TEXT, `" + GENDER + "` TEXT," + "`" + AGE + "` INTEGER)";
 
 //  Future<int> addUser(Map<String, dynamic> row);
 //
