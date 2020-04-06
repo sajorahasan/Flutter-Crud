@@ -76,34 +76,35 @@ class _DashboardState extends State<DashboardScreen> {
       floatingActionButton: getFABButton(),
       appBar: Header.getAppBar(context, 'Dashboard', actions: getMenuAction()),
       body: Container(
-          padding: EdgeInsets.all(10),
-          child: FutureBuilder<List<User>>(
-            future: getAllUsers(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData && snapshot.data.length != 0) {
-                return ListView.builder(
-                  itemCount: snapshot.data.length,
-                  padding: EdgeInsets.all(8.0),
-                  itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[UserCard(snapshot.data[index])],
-                    );
-                  },
-                );
-              } else {
-                return Center(
-                  child: EmptyView(
-                    icon: OMIcons.person,
-                    title: 'No User found.',
-                    subTitle: 'Please add the new user.',
-                  ),
-                );
-              }
-            },
-          )),
+        padding: EdgeInsets.all(10),
+        child: FutureBuilder<List<User>>(
+          future: getAllUsers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData && snapshot.data.length != 0) {
+              return ListView.builder(
+                itemCount: snapshot.data.length,
+                padding: EdgeInsets.all(8.0),
+                itemBuilder: (BuildContext context, int index) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[UserCard(snapshot.data[index])],
+                  );
+                },
+              );
+            } else {
+              return Center(
+                child: EmptyView(
+                  icon: OMIcons.person,
+                  title: 'No User found.',
+                  subTitle: 'Please add the new user.',
+                ),
+              );
+            }
+          },
+        ),
+      ),
     );
   }
 }
