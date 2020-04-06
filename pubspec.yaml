@@ -31,6 +31,9 @@ dependencies:
 
   fluttertoast: ^4.0.0
 
+  #https://pub.dev/packages/cloud_firestore
+  cloud_firestore: ^0.13.4+2
+
   #https://pub.dev/packages/dio
   dio: ^3.0.9
 
